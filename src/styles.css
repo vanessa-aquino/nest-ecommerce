@@ -68,4 +68,5 @@ input,
 select,
 button {
   cursor: pointer;
+  outline: none;
 }

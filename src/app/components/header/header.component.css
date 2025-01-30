@@ -88,17 +88,14 @@
   border-bottom-right-radius: 5px;
   border-left: none;
   padding-left: 12px;
-
-  @media (max-width: 1120px) {
-    height: 34px;
-   }
-}
-
-#search::placeholder {
   color: var(--color-gray);
   line-height: 16.8px;
   font-family: var(--body-font);
   font-size: 0.875rem;
+
+  @media (max-width: 1120px) {
+    height: 34px;
+   }
 }
 
 #search:focus {
