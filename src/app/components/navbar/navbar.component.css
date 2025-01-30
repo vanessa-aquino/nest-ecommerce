@@ -4,6 +4,11 @@
   align-items: center;
   height: 37px;
   border-bottom: 1px solid var(--border-color);
+  padding: 5px 100px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .container_nav__list {
@@ -40,6 +45,18 @@ li:hover {
   color: var(--detail-blue);
 }
 
+.container_responsive {
+  @media (max-width: 1110px) {
+    display: none;
+  }
+}
+
+.container_responsive > p {
+  font-family: var(--body-font);
+  color: var(--color-gray2);
+  font-weight: 600;
+}
+
 p, span {
   font-family: var(--body-font);
   color: var(--color-gray2);
@@ -48,6 +65,7 @@ p, span {
   text-align: center;
   font-size: 0.875rem;
 }
+
 
 p:last-child {
   font-weight: 400;
