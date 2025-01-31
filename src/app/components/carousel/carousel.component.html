@@ -1,22 +1,26 @@
 <div class="container_carousel">
   <button class="prev" (click)="prevImage()">❮</button>
   <div class="image-container">
-    <div class="container_texts">
-      <h2>Não perca as incrivéis ofertas da mercearia</h2>
-      <p>Increva-se na nossa newsletter</p>
+    <div class="container_texts" [class.fade]="true">
+      <h2>{{ slides[currentIndex].title }}</h2>
+      <p>{{slides[currentIndex].description}}</p>
       <div class="container_input">
         <img src="icons/email.png">
         <input type="email" placeholder="Seu email" id="email">
         <button>Se Inscreva</button>
       </div>
     </div>
-    <img [src]="images[currentIndex]" alt="Imagem do Carrossel">
+    <div class="image-wrapper">
+      <img *ngFor="let img of image; let i = index" [src]="img"
+           [class.active]="i === currentIndex" [class.inactive]="i !== currentIndex"
+           alt="Imagem do Carrossel">
+    </div>
     <div>
     </div>
   </div>
   <button class="next" (click)="nextImage()">❯</button>
   <div class="container_indicators">
-    <span *ngFor="let img of images; let i = index"
+    <span *ngFor="let img of slides; let i = index"
           [class.active]="i === currentIndex"
           (click)="goToImage(i)">
     </span>
