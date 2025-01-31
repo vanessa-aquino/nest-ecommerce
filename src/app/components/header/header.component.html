@@ -6,13 +6,31 @@
   <div class="header_container__input">
     <select name="select-categorys" id="select-categorys">
       <option value="all">Todas as Categorias</option>
+      <option value="milks-dairries">Leites e Laticínios</option>
+      <option value="wines-alcohol">Vinhos e Alcólicos</option>
+      <option value="beauty">Beleza</option>
+      <option value="pets">Pets</option>
+      <option value="packaged">Guloseimas</option>
+      <option value="staple-food">Alimentos Básicos</option>
+      <option value="fruits">Frutas</option>
+      <option value="vegetables">Legumes e Verduras</option>
     </select>
     <input type="text" name="search-itens" id="search" placeholder="Pesquise seus itens...">
     <span><img src="icons/search.png"></span>
   </div>
   <div class="location">
-    <button><img src="icons/loc.png"> Sua Localização<img src="icons/little-arrow.png"></button>
+    <button (click)="getUserLocation()"><img src="icons/loc.png"> Sua Localização<img src="icons/little-arrow.png"></button>
   </div>
+  <!-- LOCALIZAÇÃO -->
+  <div *ngIf="errorMessage" class="error">
+    <p>{{errorMessage}}</p>
+  </div>
+
+  <div *ngIf="latitude !== null && longitude !== null">
+    <p>Latitude: {{latitude}}</p>
+    <p>Longitude: {{longitude}}</p>
+  </div>
+
   <div class="header_container__icons">
       <img src="icons/heart.png">
       <img src="icons/cart.png">

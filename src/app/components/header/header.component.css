@@ -68,16 +68,27 @@
   border-right: none;
   font-family: var(--title-font);
   font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.800rem;
   line-height: 50px;
   color: var(--detail-blue);
   outline: none;
   cursor: pointer;
-
+  padding-left: 5px;
 
   @media (max-width: 1120px) {
    height: 40px;
   }
+}
+
+select > option {
+  background-color: var(--detail-green);
+  color: var(--detail-blue);
+  font-weight: 900;
+}
+
+select > option:checked {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
 }
 
 #search {
