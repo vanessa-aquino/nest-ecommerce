@@ -1,0 +1,88 @@
+.container_title {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--title-font);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 38.4px;
+  color: var(--detail-blue);
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.container_title > h2 {
+  padding-left: 10px;
+}
+
+.container_buttons {
+  display: flex;
+  gap: 15px;
+  padding-right: 10px;
+}
+
+.prev,
+.next {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  color: var(--detail-blue);
+  border: 1px solid var(--detail-blue);
+  background: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: var(--primary-color);
+  border: var(--primary-color);
+  color: #FFFFFF;
+}
+
+.container_carousel__categories {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  cursor: grab;
+}
+
+.container_categories::-webkit-scrollbar {
+  display: none;
+}
+
+.container_carousel__categories:active {
+  cursor: grabbing;
+}
+
+.container_carousel__categories * {
+  user-select: none;
+}
+
+.container_categories {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+}
+
+.card_categories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: #F4F6FA;
+  border: 1px solid #F4F6FA;
+  flex: 0 0 auto;
+  width: 178px;
+  height: 200px;
+}
+
+

@@ -21,16 +21,6 @@
   <div class="location">
     <button (click)="getUserLocation()"><img src="icons/loc.png"> Sua Localização<img src="icons/little-arrow.png"></button>
   </div>
-  <!-- LOCALIZAÇÃO -->
-  <div *ngIf="errorMessage" class="error">
-    <p>{{errorMessage}}</p>
-  </div>
-
-  <div *ngIf="latitude !== null && longitude !== null">
-    <p>Latitude: {{latitude}}</p>
-    <p>Longitude: {{longitude}}</p>
-  </div>
-
   <div class="header_container__icons">
       <img src="icons/heart.png">
       <img src="icons/cart.png">
