@@ -1,0 +1,16 @@
+<div class="container_title">
+  <h2>Compre por Categorias</h2>
+  <div class="container_buttons">
+    <button class="prev" (click)="scrolLeft()">❮</button>
+    <button class="next" (click)="scrollRight()">❯</button>
+  </div>
+</div>
+<div class="container_carousel__categories">
+  <div class="container_categories" #carousel>
+    <div class="card_categories" *ngFor="let category of categories">
+      <img [src]="category.image">
+      <h4>{{ category.name }}</h4>
+    </div>
+  </div>
+</div>
+
