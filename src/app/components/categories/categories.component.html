@@ -8,9 +8,11 @@
 <div class="container_carousel__categories">
   <div class="container_categories" #carousel>
     <div class="card_categories" *ngFor="let category of categories">
-      <img [src]="category.image">
+      <img [src]="category.image" alt="{{category.name}}">
       <h4>{{ category.name }}</h4>
     </div>
   </div>
 </div>
-
+<section class="container_view__products">
+  <h2>Produtos Populares</h2>
+</section>
