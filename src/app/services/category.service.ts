@@ -7,11 +7,11 @@ import { Category } from '../models/category.model';
 export class CategoryService {
   private categories: Category[] = [
     {
-      name:'Leites e Laticínios',
+      name:'Leites & Laticínios',
       image: 'img/milks.png'
     },
     {
-      name:'Vinhos e Alcólicos',
+      name:'Vinhos & Alcólicos',
       image: 'img/wines.png'
     },
     {
@@ -35,7 +35,7 @@ export class CategoryService {
       image: 'img/fruits.png'
     },
     {
-      name:'Legumes e Verduras',
+      name:'Legumes & Verduras',
       image: 'img/vegetables.png'
     },
   ];
