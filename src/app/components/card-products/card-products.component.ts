@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { CardProducts } from '../../models/card-products.model';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './card-products.component.css'
 })
 export class CardProductsComponent implements OnInit {
-  cardProducts: CardProducts[] = [];
+  @Input() cardProducts: CardProducts[] = [];
 
   constructor (private productsService: ProductsService) {};
 

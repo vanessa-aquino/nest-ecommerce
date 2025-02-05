@@ -53,7 +53,7 @@
   display: flex;
   align-items: center;
   gap: 50px;
-  cursor: grab;
+  cursor: pointer;
 }
 
 .container_categories::-webkit-scrollbar {

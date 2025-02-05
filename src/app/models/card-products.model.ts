@@ -4,4 +4,5 @@ export interface CardProducts {
   category: string;
   name: string;
   price: string;
+  id: number;
 }
