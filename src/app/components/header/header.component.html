@@ -4,7 +4,7 @@
   </div>
   <img src="img/logo.png" alt="Logo Nest" id="logo">
   <div class="header_container__input">
-    <select name="select-categorys" id="select-categorys">
+    <select name="select-categorys" id="select-categorys" (change)="updateCategory($event)" >
       <option value="all">Todas as Categorias</option>
       <option value="milks-dairries">Leites e Laticínios</option>
       <option value="wines-alcohol">Vinhos e Alcólicos</option>
@@ -15,8 +15,8 @@
       <option value="fruits">Frutas</option>
       <option value="vegetables">Legumes e Verduras</option>
     </select>
-    <input type="text" name="search-itens" id="search" placeholder="Pesquise seus itens...">
-    <span><img src="icons/search.png"></span>
+    <input type="text" name="search-itens" id="search" placeholder="Pesquise seus itens..." (input)="updateSearchTerm($event)" />
+    <span (click)="searchItens()" ><img src="icons/search.png"/></span>
   </div>
   <div class="location">
     <button (click)="getUserLocation()"><img src="icons/loc.png"> Sua Localização<img src="icons/little-arrow.png"></button>

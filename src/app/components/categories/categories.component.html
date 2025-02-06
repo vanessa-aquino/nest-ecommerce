@@ -15,10 +15,13 @@
 </div>
 <section class="container_view__products">
   <h2 id="view_products__title"> {{productsTitle}} </h2>
-  <button (click)="showAllProducts()">Todos os Produtos</button>
+  <button (click)="showAllProducts()"><img src="icons/arrow-back.png" id="arrow-back"/>Todos os Produtos</button>
 </section>
 <div class="container_cards">
-  <app-card-products [cardProducts]="products" ></app-card-products>
+  <app-card-products [cardProducts]="products"></app-card-products>
+</div>
+<div *ngIf="products.length === 0" class="container_productsnotfound">
+  <h2>Não há produtos disponíveis nessa categoria.</h2>
 </div>
 
 

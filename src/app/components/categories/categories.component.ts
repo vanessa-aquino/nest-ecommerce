@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild, AfterViewInit,} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { CardProductsComponent } from '../card-products/card-products.component';
 import { Category } from '../../models/category.model';
-import { CategoryService } from '../../services/category.service';
-import { CommonModule } from '@angular/common';
-import { ProductsService } from '../../services/products.service';
 import { CardProducts } from '../../models/card-products.model';
+import { CategoryService } from '../../services/category.service';
+import { ProductsService } from '../../services/products.service';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-categories',
@@ -25,7 +26,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
 
   constructor(
     private categoryService: CategoryService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
   ) {};
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     this.allProducts = this.productsService.getAllProducts();
     this.products = [...this.allProducts];
   };
+
 
   ngAfterViewInit(): void {
     const carouselEl = this.carousel.nativeElement;
@@ -82,6 +84,4 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     this.products = [...this.allProducts];
     this.productsTitle = 'Todos os Produtos';
   }
-
-
 }

@@ -116,5 +116,7 @@ export class ProductsService {
 
   getProductsById(id: number): CardProducts[] {
     return this.allProducts.filter(product => product.id === id);
-  }
+  };
+
+
 }
