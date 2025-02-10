@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GeolocationService } from '../../services/geolocation.service';
 import { SearchService } from '../../services/search.service';
-import { take } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -23,8 +22,13 @@ export class HeaderComponent implements OnInit{
   ) {};
 
   ngOnInit(): void {
-    this.searchService.searchTerm$.pipe(take(1)).subscribe(term => this.searchTerm = term);
-    this.searchService.selectedCategory$.pipe(take(1)).subscribe(category => this.selectedCategory = category);
+    this.searchService.searchTerm$.subscribe(term => {
+      this.searchTerm = term;
+    });
+
+    this.searchService.selectedCategory$.subscribe(category => {
+      this.selectedCategory = category;
+    })
   };
 
   getUserLocation(): void {
@@ -41,21 +45,18 @@ export class HeaderComponent implements OnInit{
   updateSearchTerm(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.searchService.updateSearchTerm(value);
+    console.log(value)
   };
 
   updateCategory(event: Event): void {
-    const value = (event.target as HTMLSelectElement).value;
-    this.searchService.updateCategory(value);
+  const target = event.target as HTMLElement;
+  if (!(target instanceof HTMLSelectElement)) {
+    console.error("❌ Erro: updateCategory chamado em um elemento que não é um <select>", target);
+    return;
+  }
+  const selectedOption = target.options[target.selectedIndex].text;
+  this.searchService.updateCategory(selectedOption);
+  console.log(`✅ Categoria selecionada: ${selectedOption}`);
   };
 
-  searchItens(): void {
-    this.searchService.searchTerm$.pipe(take(1)).subscribe(searchTerm => {
-      this.searchTerm = searchTerm;
-      console.log(searchTerm)
-    });
-    this.searchService.selectedCategory$.pipe(take(1)).subscribe(selectedCategory => {
-      this.selectedCategory = selectedCategory;
-      console.log(selectedCategory)
-    });
-  };
 }
