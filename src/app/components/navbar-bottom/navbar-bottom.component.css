@@ -1,5 +1,5 @@
 .container_nav {
-  width: 82%;
+  width: 100%;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,10 @@
   @media (max-width: 768px) {
     display: none;
   }
+}
 
+.container_menu {
+  margin-left: 120px;
 }
 
 .menu_list {
@@ -55,6 +58,7 @@ li:first-of-type {
   align-items: center;
   gap: 10px;
   width: auto;
+  margin-right: 120px;
 }
 
 .container_support > img {

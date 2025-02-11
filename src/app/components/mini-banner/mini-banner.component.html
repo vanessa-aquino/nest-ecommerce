@@ -1,0 +1,9 @@
+<div class="container_mini-banner">
+  <div class="mini-banner" *ngFor="let banner of miniBanner">
+    <img [src]="banner.image">
+    <div class="container_infos">
+      <h3> {{banner.title}} </h3>
+      <p> {{banner.detail}} </p>
+    </div>
+  </div>
+</div>
