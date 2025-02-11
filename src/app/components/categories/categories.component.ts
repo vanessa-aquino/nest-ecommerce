@@ -42,11 +42,6 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     this.searchTerm = term;
     this.filterProducts();
     });
-
-    this.searchService.selectedCategory$.subscribe(category => {
-    this.selectedCategory = category;
-    this.filterProducts();
-  });
   };
 
   ngAfterViewInit(): void {
@@ -79,13 +74,8 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
     const searchTerm = this.searchTerm ? this.searchTerm.toLowerCase() : '';
     this.products = this.allProducts.filter(product => {
       const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm);
-      const matchesCategory = this.selectedCategory === 'all' || product.category === this.selectedCategory;
-      return matchesSearchTerm && matchesCategory;
+      return matchesSearchTerm;
     });
-
-    this.productsTitle = this.selectedCategory === 'all'
-    ? 'Todos os Produtos'
-    : `Produtos em: ${this.selectedCategory}`;
 };
 
   scrolLeft(): void {

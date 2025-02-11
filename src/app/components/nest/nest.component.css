@@ -1,0 +1,19 @@
+.container_title {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--title-font);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 38.4px;
+  color: var(--detail-blue);
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.container_cards {
+  width: 90%;
+  margin: auto;
+}
