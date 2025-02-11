@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class CardNestComponent {
 
 
-scrollBuy() {
+scrollBuy():void {
   const sectionBuy = document.querySelector('#buy');
   if(sectionBuy) {
     sectionBuy.scrollIntoView({behavior: 'smooth'});

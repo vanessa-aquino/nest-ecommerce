@@ -47,5 +47,10 @@ export class HeaderComponent implements OnInit{
     console.log(value)
   };
 
-
+  scrollBy():void {
+    const search = document.querySelector('#buy');
+    if(search) {
+      search.scrollIntoView({behavior: 'smooth'});
+    };
+  };
 }

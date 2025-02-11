@@ -20,7 +20,7 @@
     id="search"
     placeholder="Pesquise seus itens..."
     (input)="updateSearchTerm($event)" />
-    <span>
+    <span (click)="scrollBy()">
       <img src="icons/search.png"/>
     </span>
   </div>
