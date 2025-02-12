@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GeolocationService } from '../../services/geolocation.service';
 import { SearchService } from '../../services/search.service';
-import { ProductsService } from '../../services/products.service';
 import { Category } from '../../models/category.model';
 
 @Component({
