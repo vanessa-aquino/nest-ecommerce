@@ -1,0 +1,64 @@
+.container_banner {
+    width: 90%;
+    margin: auto;
+    margin-top: 25px;
+    background-image: url('/img/bg-banner-pages.png');
+    background-size: contain;
+    border-radius: 20px;
+    height: 227px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container_banner__infos {
+    margin-left: 80px;
+}
+
+.container_banner__infos > h2 {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 57.6px;
+    color: var(--detail-blue);
+}
+
+.banner_nav__pages {
+    margin-top: 16px;
+    display: flex;
+}
+
+p {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 24px;
+    color: var(--color-gray2);
+    cursor: pointer;
+}
+
+img {
+    width: 14px;
+    height: 14px;
+}
+
+img:last-child {
+    width: 16px;
+    height: 16px;
+}
+
+img:nth-child(2) {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+}
+
+span {
+    color: var(--primary-color);
+}
+
+p:hover {
+    color: var(--primary-color);
+}

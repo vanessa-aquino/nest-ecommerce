@@ -5,7 +5,7 @@ import { SearchService } from '../../services/search.service';
 import { Category } from '../../models/category.model';
 import { ProductsService } from '../../services/products.service';
 import { Subscription } from 'rxjs';
-
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-header',
@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     private geolocationService: GeolocationService,
     private searchService: SearchService,
     private productsService: ProductsService,
+    private routerService: RouterService,
   ) {};
 
   ngOnInit(): void {
@@ -66,4 +67,9 @@ export class HeaderComponent implements OnInit, OnDestroy{
       search.scrollIntoView({behavior: 'smooth'});
     };
   };
+
+  goToFavorites() {
+    this.routerService.goToFavorites();
+  };
 }
+

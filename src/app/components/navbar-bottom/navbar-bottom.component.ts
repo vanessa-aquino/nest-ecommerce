@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-navbar-bottom',
@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarBottomComponent {
 
+  constructor(private router: RouterService) {}
+
+  goToHome(): void {
+    this.router.goToHome();
+  }
 }
