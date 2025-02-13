@@ -33,6 +33,15 @@
   top: 0;
 }
 
+#favorite {
+  width: 20px;
+  align-self: flex-end;
+  position: absolute;
+  top: 1%;
+  right: 5%;
+  cursor: pointer;
+}
+
 #category,
 #product-name,
 .container_price__buy {

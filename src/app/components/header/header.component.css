@@ -184,6 +184,26 @@ span > img {
    }
 }
 
+.container_icons {
+  position: relative;
+}
+
+.count {
+  position: absolute;
+  border: none;
+  top: -5px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  font-size: 0.75rem;
+  line-height: 14px;
+  display: flex;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 
 
 

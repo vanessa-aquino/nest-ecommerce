@@ -16,6 +16,18 @@ export class CardProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardProducts = this.productsService.getAllProducts();
+
+    const savedFavorites = localStorage.getItem('favorites');
+    if(savedFavorites) {
+      const favoriteIds: string[] = JSON.parse(savedFavorites);
+
+      this.cardProducts.forEach(product => {
+        const uniqueId = this.productsService.getUniqueProductId(product);
+        product.isFavorited = favoriteIds.includes(uniqueId);
+        product.favorite = product.isFavorited ? 'icons/favorite-hover.png' : 'icons/favorite.png'
+
+      })
+    }
   }
 
   getTagColor(tag: string): string {
@@ -30,4 +42,13 @@ export class CardProductsComponent implements OnInit {
         return '';
     };
   };
+
+  getToggleFavorite(product: CardProducts): void {
+    this.productsService.toggleFavorite(product);
+    const favoriteIds = this.cardProducts
+      .filter(p => p.isFavorited)
+      .map(p => this.productsService.getUniqueProductId(p));
+
+    localStorage.setItem('favorites', JSON.stringify(favoriteIds));
+  }
 }

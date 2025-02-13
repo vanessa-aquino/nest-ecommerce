@@ -28,8 +28,14 @@
     <button (click)="getUserLocation()"><img src="icons/loc.png"> Sua Localização<img src="icons/little-arrow.png"></button>
   </div>
   <div class="header_container__icons">
+    <div class="container_icons">
+      <span class="count" [style.display]="favoriteCount === 0 ? 'none' : 'inline' "> {{favoriteCount}} </span>
       <img src="icons/heart.png">
+    </div>
+    <div class="container_icons">
+      <span class="count"></span>
       <img src="icons/cart.png">
+    </div>
       <img src="icons/user.png">
   </div>
 </header>
