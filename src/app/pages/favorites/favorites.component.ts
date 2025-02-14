@@ -1,15 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavbarBottomComponent } from "../../components/navbar-bottom/navbar-bottom.component";
 import { HeaderComponent } from "../../components/header/header.component";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { BannerPageComponent } from "../../components/banner-page/banner-page.component";
+import { CardProductsComponent } from "../../components/card-products/card-products.component";
+import { CardProducts } from '../../models/card-products.model';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-favorites',
-  imports: [NavbarBottomComponent, HeaderComponent, NavbarComponent, BannerPageComponent],
+  imports: [NavbarBottomComponent, HeaderComponent, NavbarComponent, BannerPageComponent, CardProductsComponent, CommonModule],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css'
 })
-export class FavoritesComponent {
+export class FavoritesComponent implements OnInit {
+  favorites: CardProducts[] = [];
+
+  constructor(private productsService: ProductsService) {};
+
+  ngOnInit(): void {
+    this.favorites = this.productsService.getFavoriteProducts();
+      console.log(this.favorites)
+    };
   
 }
+

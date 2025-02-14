@@ -11,12 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class CardProductsComponent implements OnInit {
   @Input() cardProducts: CardProducts[] = [];
+  @Input() isFavoritePage: boolean = false;
 
   constructor (private productsService: ProductsService) {};
 
   ngOnInit(): void {
-    this.cardProducts = this.productsService.getAllProducts();
-
     const savedFavorites = localStorage.getItem('favorites');
     if(savedFavorites) {
       const favoriteIds: string[] = JSON.parse(savedFavorites);
@@ -50,5 +49,5 @@ export class CardProductsComponent implements OnInit {
       .map(p => this.productsService.getUniqueProductId(p));
 
     localStorage.setItem('favorites', JSON.stringify(favoriteIds));
-  }
+  };
 }

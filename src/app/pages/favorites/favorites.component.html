@@ -5,4 +5,8 @@
 </header>
 <main>
     <app-banner-page></app-banner-page>
+    <div *ngIf="favorites.length === 0;">
+        <h2>Nenhum produto favoritado <img src="icons/broken-heart.png"></h2>
+    </div>
+    <app-card-products [cardProducts]="favorites"></app-card-products>
 </main>

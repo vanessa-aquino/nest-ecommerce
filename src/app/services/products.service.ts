@@ -153,8 +153,8 @@ export class ProductsService {
   toggleFavorite(product: CardProducts): void {
     product.isFavorited = !product.isFavorited;
     product.favorite = product.isFavorited ? 'icons/favorite-hover.png' : 'icons/favorite.png';
-
     this.updateFavoritesCount();
+    this.favoritesCountSubject.next(this.getFavoritesCount());
   };
 
   getUniqueProductId(product: CardProducts): string {
@@ -176,4 +176,18 @@ export class ProductsService {
     const savedFavoritesCount = localStorage.getItem('favoriteItensCount');
     return savedFavoritesCount ? JSON.parse(savedFavoritesCount) : 0;
   };
+
+  getFavoriteProducts(): CardProducts[] {
+    const savedFavorites = localStorage.getItem('favorites');
+
+    if(!savedFavorites) {
+      return [];
+    };
+
+    const favoriteIds: string[] = JSON.parse(savedFavorites);
+    return this.allProducts.filter(product => {
+      const uniqueId = this.getUniqueProductId(product);
+      return favoriteIds.includes(uniqueId);
+    });
+  }
 }
