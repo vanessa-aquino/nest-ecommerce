@@ -42,6 +42,16 @@
   cursor: pointer;
 }
 
+.tooltip {
+  position: absolute;
+  top: 5px;
+  font-family: var(--title-font);
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: var(--color-gray2);
+  right: 32px;
+}
+
 #category,
 #product-name,
 .container_price__buy {

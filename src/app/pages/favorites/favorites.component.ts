@@ -7,6 +7,7 @@ import { BannerPageComponent } from "../../components/banner-page/banner-page.co
 import { CardProductsComponent } from "../../components/card-products/card-products.component";
 import { CardProducts } from '../../models/card-products.model';
 import { ProductsService } from '../../services/products.service';
+import { RouterService } from '../../services/router.service';
 
 @Component({
   selector: 'app-favorites',
@@ -17,12 +18,17 @@ import { ProductsService } from '../../services/products.service';
 export class FavoritesComponent implements OnInit {
   favorites: CardProducts[] = [];
 
-  constructor(private productsService: ProductsService) {};
+  constructor(
+    private productsService: ProductsService,
+    private routerService: RouterService,
+  ) {};
 
   ngOnInit(): void {
     this.favorites = this.productsService.getFavoriteProducts();
-      console.log(this.favorites)
     };
   
+  goToHome(): void {
+    this.routerService.goToHome();
+  }
 }
 

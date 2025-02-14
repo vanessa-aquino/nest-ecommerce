@@ -7,4 +7,5 @@ export interface CardProducts {
   price: string;
   id: number;
   isFavorited: boolean;
+  showTooltip: boolean;
 }

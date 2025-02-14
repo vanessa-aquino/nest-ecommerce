@@ -5,8 +5,11 @@
 </header>
 <main>
     <app-banner-page></app-banner-page>
-    <div *ngIf="favorites.length === 0;">
-        <h2>Nenhum produto favoritado <img src="icons/broken-heart.png"></h2>
-    </div>
-    <app-card-products [cardProducts]="favorites"></app-card-products>
+    <section class="container_favorites">
+        <button (click)="goToHome()" ><img src="icons/arrow-back.png" id="arrow-back" />Voltar</button>
+        <div *ngIf="favorites.length === 0;" class="container_no-favorites">
+            <h2>Nenhum produto favoritado <img src="icons/broken-heart.png"></h2>
+        </div>
+        <app-card-products [cardProducts]="favorites" [isFavoritePage]="true"></app-card-products>
+    </section>
 </main>

@@ -15,7 +15,8 @@ export class ProductsService {
       price: 'R$ 10,00',
       id: 5,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       tag: 'New',
@@ -25,7 +26,8 @@ export class ProductsService {
       price: 'R$ 32,00',
       id: 5,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/cookie.png',
@@ -34,7 +36,8 @@ export class ProductsService {
       price: 'R$ 8,50',
       id: 5,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/creamcheese.png',
@@ -43,7 +46,8 @@ export class ProductsService {
       price: 'R$ 10,50',
       id: 1,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       tag: 'Hot',
@@ -53,7 +57,8 @@ export class ProductsService {
       price: 'R$ 80,00',
       id: 2,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/grape.png',
@@ -62,7 +67,8 @@ export class ProductsService {
       price: 'R$ 7,00',
       id: 7,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/kiwi.png',
@@ -71,7 +77,8 @@ export class ProductsService {
       price: 'R$ 8,00',
       id: 7,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/mango.png',
@@ -80,7 +87,8 @@ export class ProductsService {
       price: 'R$ 5,50',
       id: 7,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/margarina.png',
@@ -89,7 +97,8 @@ export class ProductsService {
       price: 'R$ 8,50',
       id: 1,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/milk.png',
@@ -98,7 +107,8 @@ export class ProductsService {
       price: 'R$ 24,00',
       id: 1,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/potato.png',
@@ -107,7 +117,8 @@ export class ProductsService {
       price: 'R$ 3,90',
       id: 8,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/rice.png',
@@ -116,7 +127,8 @@ export class ProductsService {
       price: 'R$ 5,90',
       id: 6,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       image: 'img/sugar.png',
@@ -125,7 +137,8 @@ export class ProductsService {
       price: 'R$ 3,90',
       id: 6,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
     {
       tag: 'Sale',
@@ -135,7 +148,8 @@ export class ProductsService {
       price: 'R$ 1,90',
       id: 8,
       favorite: 'icons/favorite.png',
-      isFavorited: false
+      isFavorited: false,
+      showTooltip: false
     },
   ];
 
@@ -183,7 +197,6 @@ export class ProductsService {
     if(!savedFavorites) {
       return [];
     };
-
     const favoriteIds: string[] = JSON.parse(savedFavorites);
     return this.allProducts.filter(product => {
       const uniqueId = this.getUniqueProductId(product);

@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class CardProductsComponent implements OnInit {
   @Input() cardProducts: CardProducts[] = [];
   @Input() isFavoritePage: boolean = false;
+  showTooltip: boolean = false;
 
   constructor (private productsService: ProductsService) {};
 
@@ -24,7 +25,6 @@ export class CardProductsComponent implements OnInit {
         const uniqueId = this.productsService.getUniqueProductId(product);
         product.isFavorited = favoriteIds.includes(uniqueId);
         product.favorite = product.isFavorited ? 'icons/favorite-hover.png' : 'icons/favorite.png'
-
       })
     }
   }
@@ -49,5 +49,17 @@ export class CardProductsComponent implements OnInit {
       .map(p => this.productsService.getUniqueProductId(p));
 
     localStorage.setItem('favorites', JSON.stringify(favoriteIds));
+
+    if(!product.isFavorited) {
+      this.removeProductFromList(product);
+    }
   };
+
+  removeProductFromList(product: CardProducts): void {
+    const index = this.cardProducts.indexOf(product);
+    if(index !== -1 && this.isFavoritePage) {
+      this.cardProducts.splice(index, 1);
+    };
+  };
+
 }
