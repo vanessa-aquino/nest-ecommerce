@@ -1,3 +1,7 @@
+<div *ngIf="showNotification" class="notification">
+  {{notificationMessage}}
+</div>
+
 <div class="container_products">
   <div class="card_products" *ngFor="let product of cardProducts">
     <span *ngIf="product.tag" [ngStyle]="{'background-color': getTagColor(product.tag)}"> {{product.tag}} </span>
@@ -9,7 +13,6 @@
     (mouseleave)="product.showTooltip = false"
     >
     <span *ngIf="isFavoritePage && product.showTooltip" class="tooltip">Remover</span>
-
     <img [src]="product.image" alt="{{product.name}}">
     <span id="category"> {{product.category}} </span>
     <p id="product-name"> {{product.name}} </p>

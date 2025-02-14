@@ -68,8 +68,12 @@ export class HeaderComponent implements OnInit, OnDestroy{
     };
   };
 
-  goToFavorites() {
+  goToFavorites(): void {
     this.routerService.goToFavorites();
   };
+
+  goToHome(): void {
+    this.routerService.goToHome();
+  }
 }
 

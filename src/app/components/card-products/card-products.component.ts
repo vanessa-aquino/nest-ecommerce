@@ -14,6 +14,9 @@ export class CardProductsComponent implements OnInit {
   @Input() isFavoritePage: boolean = false;
   showTooltip: boolean = false;
 
+  notificationMessage: string = '';
+  showNotification: boolean = false;
+
   constructor (private productsService: ProductsService) {};
 
   ngOnInit(): void {
@@ -52,7 +55,19 @@ export class CardProductsComponent implements OnInit {
 
     if(!product.isFavorited) {
       this.removeProductFromList(product);
-    }
+      this.showNotificationMessage('Item removido dos favoritos!');
+    } else {
+      this.showNotificationMessage('Item adicionado aos favoritos!')
+    };
+  };
+  
+  showNotificationMessage(message: string): void {
+    this.notificationMessage = message;
+    this.showNotification = true;
+
+    setTimeout(() => {
+      this.showNotification = false;
+    }, 3000);
   };
 
   removeProductFromList(product: CardProducts): void {
