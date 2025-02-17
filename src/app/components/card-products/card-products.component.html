@@ -18,13 +18,11 @@
     <p id="product-name"> {{product.name}} </p>
     <div class="container_price__buy">
       <p> {{product.price}} </p>
-      <button *ngIf="!product.showQuantityInput" (click)="showQuantitySelector(product)" ><img src="icons/add.png"> Comprar</button>
+      <button *ngIf="!product.showQuantityInput" (click)="showQuantitySelector(product)"><img src="icons/add.png"> Comprar</button>
     </div>
-
     <div *ngIf="product.showQuantityInput">
       <input type="number" [(ngModel)]="product.quantity" min="1" value="1">
       <button (click)="confirmPurchase(product)" >Confirmar</button>
     </div>
-
   </div>
 </div>
