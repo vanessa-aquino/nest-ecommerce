@@ -6,6 +6,8 @@ export interface CardProducts {
   name: string;
   price: string;
   id: number;
+  quantity: number;
   isFavorited: boolean;
   showTooltip: boolean;
+  showQuantityInput: boolean;
 }

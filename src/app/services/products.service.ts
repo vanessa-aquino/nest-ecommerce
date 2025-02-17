@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CardProducts } from '../models/card-products.model';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,9 @@ export class ProductsService {
       id: 5,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       tag: 'New',
@@ -27,7 +30,9 @@ export class ProductsService {
       id: 5,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/cookie.png',
@@ -37,7 +42,9 @@ export class ProductsService {
       id: 5,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/creamcheese.png',
@@ -47,7 +54,9 @@ export class ProductsService {
       id: 1,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       tag: 'Hot',
@@ -58,7 +67,9 @@ export class ProductsService {
       id: 2,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/grape.png',
@@ -68,7 +79,9 @@ export class ProductsService {
       id: 7,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/kiwi.png',
@@ -78,7 +91,9 @@ export class ProductsService {
       id: 7,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/mango.png',
@@ -88,7 +103,9 @@ export class ProductsService {
       id: 7,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/margarina.png',
@@ -98,7 +115,9 @@ export class ProductsService {
       id: 1,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/milk.png',
@@ -108,7 +127,9 @@ export class ProductsService {
       id: 1,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/potato.png',
@@ -118,7 +139,9 @@ export class ProductsService {
       id: 8,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/rice.png',
@@ -128,7 +151,9 @@ export class ProductsService {
       id: 6,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       image: 'img/sugar.png',
@@ -138,7 +163,9 @@ export class ProductsService {
       id: 6,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
     {
       tag: 'Sale',
@@ -149,12 +176,16 @@ export class ProductsService {
       id: 8,
       favorite: 'icons/favorite.png',
       isFavorited: false,
-      showTooltip: false
+      showTooltip: false,
+      showQuantityInput: false,
+      quantity: 0
     },
   ];
 
   private favoritesCountSubject = new BehaviorSubject<number>(this.getFavoritesCount());
   public favoritesCount$ = this.favoritesCountSubject.asObservable();
+
+  constructor(private cartService: CartService){};
 
   getAllProducts(): CardProducts[] {
     return this.allProducts;
@@ -202,5 +233,9 @@ export class ProductsService {
       const uniqueId = this.getUniqueProductId(product);
       return favoriteIds.includes(uniqueId);
     });
-  }
+  };
+  
+  addToCart(product: CardProducts, quantity: number): void {
+    this.cartService.addToCart(product, quantity);
+  };
 }

@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import { CardProducts } from '../../models/card-products.model';
-import { CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-card-products',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './card-products.component.html',
   styleUrl: './card-products.component.css'
 })
@@ -13,11 +15,14 @@ export class CardProductsComponent implements OnInit {
   @Input() cardProducts: CardProducts[] = [];
   @Input() isFavoritePage: boolean = false;
   showTooltip: boolean = false;
-
+  products: CardProducts[] = [];
   notificationMessage: string = '';
   showNotification: boolean = false;
 
-  constructor (private productsService: ProductsService) {};
+  constructor (
+    private productsService: ProductsService,
+    private cartService: CartService
+  ) {};
 
   ngOnInit(): void {
     const savedFavorites = localStorage.getItem('favorites');
@@ -77,4 +82,14 @@ export class CardProductsComponent implements OnInit {
     };
   };
 
+  showQuantitySelector(product: CardProducts): void {
+    product.showQuantityInput = true;
+    product.quantity = 1;
+  };
+
+  confirmPurchase(product: CardProducts): void {
+    this.cartService.addToCart(product, product.quantity || 1);
+    product.showQuantityInput = false;
+    alert(`${product.name} add ao carrinho`);
+  };
 }
