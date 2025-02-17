@@ -1,11 +1,15 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 import { GeolocationService } from '../../services/geolocation.service';
 import { SearchService } from '../../services/search.service';
 import { Category } from '../../models/category.model';
 import { ProductsService } from '../../services/products.service';
-import { Subscription } from 'rxjs';
 import { RouterService } from '../../services/router.service';
+import { CartService } from '../../services/cart.service';
+import { CartComponent } from '../cart/cart.component';
+
 
 @Component({
   selector: 'app-header',
@@ -27,6 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy{
     private searchService: SearchService,
     private productsService: ProductsService,
     private routerService: RouterService,
+    private cartService: CartService,
+    public dialog: MatDialog
   ) {};
 
   ngOnInit(): void {
@@ -75,5 +81,12 @@ export class HeaderComponent implements OnInit, OnDestroy{
   goToHome(): void {
     this.routerService.goToHome();
   }
-}
 
+  openCart(): void {
+    this.dialog.open(CartComponent, {
+      width: '500px',
+      data: {message: 'Cart details'}
+    });
+  };
+
+}

@@ -22,7 +22,7 @@
     </div>
     <div *ngIf="product.showQuantityInput">
       <input type="number" [(ngModel)]="product.quantity" min="1" value="1">
-      <button (click)="confirmPurchase(product)" >Confirmar</button>
+      <button (click)="confirmPurchase(product)" (click)="addToCart(product, 1)" >Confirmar</button>
     </div>
   </div>
 </div>

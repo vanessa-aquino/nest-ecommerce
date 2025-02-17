@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductsService } from '../../services/products.service';
 import { CardProducts } from '../../models/card-products.model';
 import { CartService } from '../../services/cart.service';
+import { CartComponent } from '../cart/cart.component';
 
 @Component({
   selector: 'app-card-products',
@@ -21,7 +23,8 @@ export class CardProductsComponent implements OnInit {
 
   constructor (
     private productsService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    public dialog: MatDialog
   ) {};
 
   ngOnInit(): void {
@@ -90,6 +93,16 @@ export class CardProductsComponent implements OnInit {
   confirmPurchase(product: CardProducts): void {
     this.cartService.addToCart(product, product.quantity || 1);
     product.showQuantityInput = false;
-    alert(`${product.name} add ao carrinho`);
+  };
+
+  addToCart(product: CardProducts, quantity: number): void {
+    this.cartService.addToCart(product, quantity)
+  };
+
+  openCartDialog(): void {
+    this.dialog.open(CartComponent, {
+      width: '500px',
+      data: {message: 'Cart details'}
+    });
   };
 }
