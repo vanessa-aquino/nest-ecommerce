@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -97,6 +97,11 @@ export class CardProductsComponent implements OnInit {
 
   addToCart(product: CardProducts, quantity: number): void {
     this.cartService.addToCart(product, quantity)
+  };
+
+  changeInputValue(product: CardProducts, value: number): void {
+   let newValue = (product.quantity || 1) + value;
+   product.quantity = newValue >= 1 ? newValue : 1;
   };
 
   openCartDialog(): void {

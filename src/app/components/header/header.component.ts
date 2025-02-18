@@ -7,7 +7,6 @@ import { SearchService } from '../../services/search.service';
 import { Category } from '../../models/category.model';
 import { ProductsService } from '../../services/products.service';
 import { RouterService } from '../../services/router.service';
-import { CartService } from '../../services/cart.service';
 import { CartComponent } from '../cart/cart.component';
 
 
@@ -31,7 +30,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
     private searchService: SearchService,
     private productsService: ProductsService,
     private routerService: RouterService,
-    private cartService: CartService,
     public dialog: MatDialog
   ) {};
 
