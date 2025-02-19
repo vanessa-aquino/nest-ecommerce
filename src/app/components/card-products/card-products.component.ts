@@ -95,21 +95,14 @@ export class CardProductsComponent implements OnInit {
     product.quantity = 1;
   };
 
-  confirmPurchase(product: CardProducts): void {
-    this.cartService.addToCart(product, product.quantity || 1);
-    product.showQuantityInput = false;
-  };
-
-  addToCart(product: CardProducts, quantity: number): void {
+  addToCart(product: CardProducts, quantity: number = 1): void {
     let cart: {product: CardProducts, quantity: number}[] = JSON.parse(localStorage.getItem('cart') || '[]');
-    const uniqueId = this.productsService.getUniqueProductId(product);
-
-    const existingProducts = cart.find(p =>
-      this.productsService.getUniqueProductId(p.product) === uniqueId
+    const productIndex = cart.findIndex(p =>
+      this.productsService.getUniqueProductId(p.product) === this.productsService.getUniqueProductId(product)
     );
 
-    if(existingProducts) {
-      existingProducts.quantity += quantity;
+    if(productIndex !== -1) {
+      cart[productIndex].quantity += quantity;
     } else {
       cart.push({product, quantity});
     };
@@ -122,6 +115,27 @@ export class CardProductsComponent implements OnInit {
    let newValue = (product.quantity || 1) + value;
    product.quantity = newValue >= 1 ? newValue : 1;
   };
+
+  removeProductFromCart(product: CardProducts): void {
+  let cart: { product: CardProducts, quantity: number }[] = JSON.parse(localStorage.getItem('cart') || '[]');
+  const uniqueId = this.productsService.getUniqueProductId(product);
+
+  const productIndex = cart.findIndex(p =>
+    this.productsService.getUniqueProductId(p.product) === uniqueId
+  );
+
+  if (productIndex !== -1) {
+    if (cart[productIndex].quantity > 1) {
+      cart[productIndex].quantity -= 1;
+    } else {
+      cart.splice(productIndex, 1);
+    }
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  this.cartService.setCart(cart);
+}
+
 
   openCartDialog(): void {
     this.dialog.open(CartComponent, {

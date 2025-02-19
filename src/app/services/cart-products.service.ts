@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CartService } from './cart.service';
-import { ProductsService } from './products.service';
 import { CardProducts } from '../models/card-products.model';
 
 @Injectable({
@@ -9,8 +8,7 @@ import { CardProducts } from '../models/card-products.model';
 export class CartProductsService {
 
   constructor(
-    private cartService: CartService,
-    private productsService: ProductsService
+    private cartService: CartService
   ) { };
 
   addProductToCart(product: CardProducts, quantity: number): void {

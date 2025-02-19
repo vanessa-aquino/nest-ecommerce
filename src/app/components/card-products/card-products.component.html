@@ -18,12 +18,11 @@
     <p id="product-name"> {{product.name}} </p>
     <div class="container_price__buy">
       <p> {{product.price}} </p>
-      <button *ngIf="!product.showQuantityInput" (click)="showQuantitySelector(product)"><img src="icons/add.png"> Comprar</button>
+      <button *ngIf="!product.showQuantityInput" (click)="addToCart(product)" (click)="showQuantitySelector(product)"><img src="icons/add.png"> Comprar</button>
       <div *ngIf="product.showQuantityInput" class="container_button_add-cart">
-        <button (click)="changeInputValue(product, 1)" class="button_input">+</button>
-        <input type="number" [(ngModel)]="product.quantity" min="1" value="1">
-        <button (click)="changeInputValue(product, -1)" class="button_input">-</button>
-        <button (click)="confirmPurchase(product)" (click)="addToCart(product, 1)" class="add-cart">Confirmar</button>
+        <button (click)="changeInputValue(product, 1)" class="button_input" (click)="addToCart(product)">+</button>
+        <input type="number" [(ngModel)]="product.quantity" min="0">
+        <button (click)="changeInputValue(product, -1)" (click)="removeProductFromCart(product)" class="button_input">-</button>
     </div>
     </div>
   </div>

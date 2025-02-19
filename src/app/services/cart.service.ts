@@ -18,6 +18,7 @@ export class CartService {
     this.loadCartFromLocalStorage();
   };
 
+
   private saveCartToLocalStorage(): void {
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
   };
@@ -62,7 +63,6 @@ export class CartService {
   };
 
   setCart(cart: {product: CardProducts, quantity: number}[]): void {
-    this.cartItems = cart;
-    this.cartSubject.next(this.cartItems);
+    this.cartSubject.next(cart);
   };
 }
