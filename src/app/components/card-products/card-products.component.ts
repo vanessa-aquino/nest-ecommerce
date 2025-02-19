@@ -73,7 +73,7 @@ export class CardProductsComponent implements OnInit {
       this.showNotificationMessage('Item adicionado aos favoritos!');
     };
   };
-  
+
   showNotificationMessage(message: string): void {
     this.notificationMessage = message;
     this.showNotification = true;
@@ -109,6 +109,7 @@ export class CardProductsComponent implements OnInit {
 
     localStorage.setItem('cart', JSON.stringify(cart));
     this.cartService.addToCart(product, quantity);
+    this.showNotificationMessage('Item adicionado ao carrinho!');
   };
 
   changeInputValue(product: CardProducts, value: number): void {
@@ -134,6 +135,7 @@ export class CardProductsComponent implements OnInit {
 
   localStorage.setItem('cart', JSON.stringify(cart));
   this.cartService.setCart(cart);
+  this.showNotificationMessage('Item removido do carrinho!');
 }
 
 

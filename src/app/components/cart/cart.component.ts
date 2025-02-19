@@ -23,6 +23,7 @@ export class CartComponent {
     });
   };
 
+
   removeItem(item: {product: CardProducts, quantity: number}): void {
     this.cartService.removeFromCart(item.product);
   };

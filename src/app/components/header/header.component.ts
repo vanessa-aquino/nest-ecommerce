@@ -8,6 +8,7 @@ import { Category } from '../../models/category.model';
 import { ProductsService } from '../../services/products.service';
 import { RouterService } from '../../services/router.service';
 import { CartComponent } from '../cart/cart.component';
+import { CartService } from '../../services/cart.service';
 
 
 @Component({
@@ -23,12 +24,14 @@ export class HeaderComponent implements OnInit, OnDestroy{
   errorMessage: string = '';
   searchTerm: string = '';
   favoriteCount: number = 0;
+  cartItemCount: number = 0;
   private favoritesCountSubscription!: Subscription;
 
   constructor(
     private geolocationService: GeolocationService,
     private searchService: SearchService,
     private productsService: ProductsService,
+    private cartService: CartService,
     private routerService: RouterService,
     public dialog: MatDialog
   ) {};
@@ -39,7 +42,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
     });
     this.favoritesCountSubscription = this.productsService.favoritesCount$.subscribe(count => {
       this.favoriteCount = count;
-    })
+    });
+
+    this.cartService.cart$.subscribe(cart => {
+      this.cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+    });
   };
 
   ngOnDestroy(): void {
@@ -82,9 +89,13 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   openCart(): void {
     this.dialog.open(CartComponent, {
-      width: '500px',
-      data: {message: 'Cart details'}
+      width: '300px',
+      height: '100vh',
+      position: {right: '0px'},
+      hasBackdrop: true,
+      panelClass: 'cart-modal',
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms',
     });
   };
-
 }

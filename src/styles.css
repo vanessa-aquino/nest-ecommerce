@@ -70,3 +70,10 @@ button {
   cursor: pointer;
   outline: none;
 }
+
+.mat-mdc-dialog-surface {
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+}
+

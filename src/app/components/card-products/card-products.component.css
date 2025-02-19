@@ -176,7 +176,7 @@ input[type=number] {
 }
 
 .button_input:last-child {
-  right: 100%;
+  left: 0;
 }
 
 .add-cart {

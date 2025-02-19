@@ -9,7 +9,7 @@ import { ProductsService } from './products.service';
 export class CartService {
   private cartItems: { product: CardProducts, quantity: number }[] = [];
   private cartSubject = new BehaviorSubject<{ product: CardProducts, quantity: number}[]>([]);
-
+  private cart: { product: CardProducts; quantity: number }[] = JSON.parse(localStorage.getItem('cart') || '[]');
   cart$ = this.cartSubject.asObservable();
 
   constructor(
@@ -65,4 +65,8 @@ export class CartService {
   setCart(cart: {product: CardProducts, quantity: number}[]): void {
     this.cartSubject.next(cart);
   };
+
+  getCartTotalItems(): number {
+    return this.cart.reduce((total, item) => total + item.quantity, 0);
+  }
 }
