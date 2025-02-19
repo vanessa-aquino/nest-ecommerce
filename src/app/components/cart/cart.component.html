@@ -1,17 +1,22 @@
 <h2 mat-dialog-title>Seu Carrinho</h2>
 
-<div *ngIf="cartItems.length === 0">
+<mat-dialog-content *ngIf="cartItems.length === 0">
 <p>Seu carrinho está vazio</p>
-</div>
+<mat-dialog-actions>
+    <button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>
+</mat-dialog-content>
 
-<div *ngIf="cartItems.length > 0">
+<mat-dialog-content *ngIf="cartItems.length > 0">
     <ul>
         <li *ngFor="let item of cartItems">
             <p> {{item.product.name}} - R$ {{item.product.price}} x {{item.quantity}} </p>
-            <button (click)="removeItem(item)" >Remover</button>
+            <button (click)="removeItem(item)">Remover</button>
         </li>
     </ul>
     <p>Total: R$ {{getTotalPrice()}}</p>
-    <button (click)="closeDialog()">Fechar</button>
-</div>
+    <mat-dialog-actions>
+        <button mat-dialog-close>Fechar</button>
+    </mat-dialog-actions>
+</mat-dialog-content>
 

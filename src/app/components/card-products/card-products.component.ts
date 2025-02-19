@@ -37,7 +37,12 @@ export class CardProductsComponent implements OnInit {
         product.isFavorited = favoriteIds.includes(uniqueId);
         product.favorite = product.isFavorited ? 'icons/favorite-hover.png' : 'icons/favorite.png'
       })
-    }
+    };
+
+    const savedCart = localStorage.getItem('cart');
+    if(savedCart) {
+      this.cartService.setCart(JSON.parse(savedCart));
+    };
   }
 
   getTagColor(tag: string): string {
@@ -65,7 +70,7 @@ export class CardProductsComponent implements OnInit {
       this.removeProductFromList(product);
       this.showNotificationMessage('Item removido dos favoritos!');
     } else {
-      this.showNotificationMessage('Item adicionado aos favoritos!')
+      this.showNotificationMessage('Item adicionado aos favoritos!');
     };
   };
   
@@ -96,7 +101,21 @@ export class CardProductsComponent implements OnInit {
   };
 
   addToCart(product: CardProducts, quantity: number): void {
-    this.cartService.addToCart(product, quantity)
+    let cart: {product: CardProducts, quantity: number}[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const uniqueId = this.productsService.getUniqueProductId(product);
+
+    const existingProducts = cart.find(p =>
+      this.productsService.getUniqueProductId(p.product) === uniqueId
+    );
+
+    if(existingProducts) {
+      existingProducts.quantity += quantity;
+    } else {
+      cart.push({product, quantity});
+    };
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    this.cartService.addToCart(product, quantity);
   };
 
   changeInputValue(product: CardProducts, value: number): void {
@@ -107,6 +126,7 @@ export class CardProductsComponent implements OnInit {
   openCartDialog(): void {
     this.dialog.open(CartComponent, {
       width: '500px',
+      height: '700px',
       data: {message: 'Cart details'}
     });
   };

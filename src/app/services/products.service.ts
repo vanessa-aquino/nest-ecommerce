@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CardProducts } from '../models/card-products.model';
-import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -185,8 +184,6 @@ export class ProductsService {
   private favoritesCountSubject = new BehaviorSubject<number>(this.getFavoritesCount());
   public favoritesCount$ = this.favoritesCountSubject.asObservable();
 
-  constructor(private cartService: CartService){};
-
   getAllProducts(): CardProducts[] {
     return this.allProducts;
   };
@@ -234,8 +231,5 @@ export class ProductsService {
       return favoriteIds.includes(uniqueId);
     });
   };
-  
-  addToCart(product: CardProducts, quantity: number): void {
-    this.cartService.addToCart(product, quantity);
-  };
+
 }

@@ -31,9 +31,5 @@ export class CartComponent {
     return this.cartItems.reduce((total, item) => {
       return total + (parseFloat(item.product.price.replace('R$ ', '').replace(',', '.')) * item.quantity);
     }, 0);
-  };
-
-  closeDialog(): void {
-    this.dialogRef.close();
-  }
+  }; 
 }

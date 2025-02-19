@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CardProducts } from '../models/card-products.model';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,29 @@ export class CartService {
 
   cart$ = this.cartSubject.asObservable();
 
+  constructor(
+    private productsService: ProductsService
+  ) {
+    this.loadCartFromLocalStorage();
+  };
+
+  private saveCartToLocalStorage(): void {
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+  };
+
+  private loadCartFromLocalStorage(): void {
+    const savedCart = localStorage.getItem('cart');
+    if(savedCart) {
+      this.cartItems = JSON.parse(savedCart);
+      this.cartSubject.next(this.cartItems);
+    };
+  };
+
   addToCart(product: CardProducts, quantity: number): void {
-    const existingItem = this.cartItems.find(item => item.product.id === product.id);
+    const uniqueId = this.productsService.getUniqueProductId(product);
+    const existingItem = this.cartItems.find(item => 
+      this.productsService.getUniqueProductId(item.product) === uniqueId
+    );
 
     if(existingItem) {
       existingItem.quantity += quantity;
@@ -21,14 +43,26 @@ export class CartService {
     };
 
     this.cartSubject.next(this.cartItems);
+    this.saveCartToLocalStorage();
   };
+
 
   removeFromCart(product: CardProducts): void {
-    this.cartItems = this.cartItems.filter(item => item.product.id !== product.id);
+    const uniqueId = this.productsService.getUniqueProductId(product);
+    this.cartItems = this.cartItems.filter(item =>
+      this.productsService.getUniqueProductId(item.product) !== uniqueId
+    );
+
     this.cartSubject.next(this.cartItems);
+    this.saveCartToLocalStorage();
   };
 
-  getCartItems(): any {
+  getCartItems(): {product: CardProducts, quantity: number}[] {
     return this.cartItems
-  }
+  };
+
+  setCart(cart: {product: CardProducts, quantity: number}[]): void {
+    this.cartItems = cart;
+    this.cartSubject.next(this.cartItems);
+  };
 }
