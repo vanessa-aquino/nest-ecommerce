@@ -75,5 +75,6 @@ button {
 	border-radius: 50px;
 	display: flex;
 	justify-content: center;
+	border-left: 3px solid var(--primary-color);
 }
 

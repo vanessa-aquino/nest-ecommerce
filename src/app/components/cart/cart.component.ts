@@ -28,9 +28,12 @@ export class CartComponent {
     this.cartService.removeFromCart(item.product);
   };
 
-  getTotalPrice(): number {
-    return this.cartItems.reduce((total, item) => {
-      return total + (parseFloat(item.product.price.replace('R$ ', '').replace(',', '.')) * item.quantity);
-    }, 0);
-  }; 
+getTotalPrice(): string {
+  const total = this.cartItems.reduce((total, item) => {
+    const price = Number(item.product.price.replace(/[^\d,]/g, '').replace(',', '.'));
+    return total + price * item.quantity;
+  }, 0);
+
+  return `${(total).toFixed(2).replace('.', ',')}`;
 }
+};

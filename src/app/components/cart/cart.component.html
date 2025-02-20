@@ -1,21 +1,32 @@
 <mat-dialog-content>
-    <div class="teste">
-        <h2 mat-dialog-title>Seu Carrinho</h2>
+    <div class="container_header__cart">
+        <img src="icons/full-cart.png"> 
+        <h2>Seu Carrinho</h2>
         <button mat-dialog-close>X</button>
     </div>
-    <div *ngIf="cartItems.length === 0">
+    <div *ngIf="cartItems.length === 0" class="container_empty-cart">
         <p>Seu carrinho está vazio</p>
+        <img src="icons/empty-cart.png">
     </div>
 
-    <div *ngIf="cartItems.length > 0">
-        <ul>
-            <li *ngFor="let item of cartItems">
+    <div *ngIf="cartItems.length > 0" class="container_items-cart">
+        <ul *ngFor="let item of cartItems">
+            <li>
                 <img [src]="item.product.image">
-                <p> {{item.product.name}} - R$ {{item.product.price}} x {{item.quantity}} </p>
-                <button (click)="removeItem(item)">Remover</button>
+                <p id="product-name"> {{item.product.name}} </p>
+                <div class="container_price__bin">
+                    <div class="container_price-quantity">
+                        <p> {{item.product.price}}</p>
+                        <p><span>Qntd:</span> {{item.quantity}}</p>
+                    </div>
+                    <button (click)="removeItem(item)"><img src="icons/bin.png"></button>
+                </div>
             </li>
         </ul>
-        <p>Total: R$ {{getTotalPrice()}}</p>
+        <div class="container_footer__cart">
+            <p id="total"><span>Total:</span> R$ {{getTotalPrice()}}</p>
+            <button class="button-payment"><img src="icons/payment.png" class="payment">Ir para pagamento</button>
+        </div>
     </div>
 </mat-dialog-content>
 

@@ -1,12 +1,151 @@
 mat-dialog-content {
     max-height: 100vh;
+    padding: 0 !important;
 }
 
-.teste {
-    border: 2px solid red;
+.container_header__cart {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
+    padding: 20px 10px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid var(--detail-gray);
 }
+
+.container_header__cart > img {
+    width: 36px;
+}
+
+.container_header__cart > h2 {
+    font-family: var(--title-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.container_empty-cart {
+    padding: 0 10px;
+    font-size: 1.2rem;
+    color: var(--detail-blue);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.container_empty-cart > img {
+    width: 30px;
+}
+
+button {
+    background: none;
+    border: none;
+    font-family: var(--title-font);
+    font-size: 1.2rem;
+    color: var(--detail-gray2);
+    font-weight: 500;
+} 
+
+.container_items-cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+li {
+    border: 1px solid #ADADAD;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 300px;
+    margin: auto;
+}
+
+#product-name {
+    font-family: var(--title-font);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 19.2px;
+    color: var(--detail-blue);
+    align-self: flex-start;
+    margin-left: 5px;
+}
+
+.container_price__bin {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.container_price-quantity > p {
+    font-family: var(--title-font);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--primary-color);
+    align-self: flex-start;
+    margin-left: 5px;
+}
+
+span {
+    color: var(--detail-blue);
+}
+
+.container_price__bin > button > img {
+    width: 24px;
+}
+
+#total {
+    padding: 20px 10px;
+    font-family: var(--title-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    border-top: 2px solid var(--detail-gray);
+}
+
+.button-payment {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.button-payment:hover {
+    color: var(--primary-color);
+}
+
+.payment {
+    width: 30px;
+}
+
+::ng-deep .mat-mdc-dialog-content {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+::ng-deep .mat-mdc-dialog-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+::ng-deep .mat-mdc-dialog-content::-webkit-scrollbar-thumb {
+    background: var(--detail-green);
+    border-radius: 10px;
+}
+
+::ng-deep .mat-mdc-dialog-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
 
 
